@@ -1,6 +1,8 @@
 {
   "name": "list-tasks",
-  "app_id": "",
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular",
-  "integrations": {}
+  "app_id": ""
 }

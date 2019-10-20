@@ -9,5 +9,10 @@
   <div padding>
     <button ion-button block (click)="signup()">{{ 'SIGNUP' | translate }}</button>
     <button ion-button block (click)="login()" class="login">{{ 'LOGIN' | translate }}</button>
+    <button ion-button block icon-left (click)="loginFB()">
+      <ion-icon name="logo-facebook"></ion-icon>Login com Facebook
+    </button>
+    <!-- <img [src]="user.img" alt="user-img"> -->
+    <!-- <p>{{ userdata }} </p> -->
   </div>
 </ion-content>
