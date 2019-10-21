@@ -32,17 +32,12 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   pages: any[] = [
-    { title: 'Tutorial', component: 'TutorialPage' },
-    { title: 'Welcome', component: 'WelcomePage' },
-    { title: 'Tabs', component: 'TabsPage' },
-    { title: 'Cards', component: 'CardsPage' },
-    { title: 'Content', component: 'ContentPage' },
-    { title: 'Login', component: 'LoginPage' },
-    { title: 'Signup', component: 'SignupPage' },
-    { title: 'Master Detail', component: 'ListMasterPage' },
-    { title: 'Menu', component: 'MenuPage' },
-    { title: 'Settings', component: 'SettingsPage' },
-    { title: 'Search', component: 'SearchPage' }
+    { title: 'Início', component: 'TabsPage' },
+    { title: 'Cards -', component: 'CardsPage' },
+    { title: 'Content -', component: 'ContentPage' },
+    { title: 'Tarefas', component: 'ListMasterPage' },
+    { title: 'Menu -', component: 'MenuPage' },
+    { title: 'Logout', component: 'WelcomePage' },
   ]
 
   constructor(private translate: TranslateService, platform: Platform, settings: Settings, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen) {
@@ -57,7 +52,7 @@ export class MyApp {
 
   initTranslate() {
     // Set the default language for translation strings, and the current language.
-    this.translate.setDefaultLang('pt-br');
+    this.translate.setDefaultLang('en');
     const browserLang = this.translate.getBrowserLang();
 
     if (browserLang) {
@@ -74,7 +69,7 @@ export class MyApp {
       }
     }
     else {
-      this.translate.use('en'); // Set your language here
+      this.translate.use('pt-br'); // Set your language here
     }
 
     this.translate.get(['BACK_BUTTON_TEXT']).subscribe(values => {

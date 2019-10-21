@@ -17,13 +17,16 @@
   "TUTORIAL_SKIP_BUTTON": "Pular",
   "TUTORIAL_CONTINUE_BUTTON": "Continuar",
 
-  "TUTORIAL_SLIDE1_TITLE": "Bem-vindo ao List Tasks",
-  "TUTORIAL_SLIDE1_DESCRIPTION": "Faça seu cadastro de forma rápida ou conecte-se com o <b> Facebook.</b>",
+  "TUTORIAL_SLIDE1_TITLE": "Bem-vindo ao Ionic Super Starter",
+  "TUTORIAL_SLIDE1_DESCRIPTION": "O <b>Ionic Super Starter</b> é um starter para Ionic completo, com diversos componentes e páginas prontas para ser utilizado como guia de melhores práticas.",
 
-  "TUTORIAL_SLIDE2_TITLE": "Como utilizar o List Tasks",
-  "TUTORIAL_SLIDE2_DESCRIPTION": "Tenha suas anotações e lembretes em um único lugar. <br>Ative as notificações e avisaremos quando tiver lembretes.",
-  
-  "TUTORIAL_SLIDE3_TITLE": "Pronto para Usar?",
+  "TUTORIAL_SLIDE2_TITLE": "Como utilizar o Super Starter",
+  "TUTORIAL_SLIDE2_DESCRIPTION": "Combine os tipos de páginas que você quer e remova aquelas que não precisa. No starter existem muitos casos de uso comuns de layouts e páginas como login, cadastro, abas e de tutorial.",
+
+  "TUTORIAL_SLIDE3_TITLE": "Iniciando o projeto",
+  "TUTORIAL_SLIDE3_DESCRIPTION": "Precisa de ajuda? Dê uma olhada no README do Super Starter para um tutorial completo",
+
+  "TUTORIAL_SLIDE4_TITLE": "Pronto para Usar?",
 
   "WELCOME_INTRO": "O ponto de partida para seu próximo app feito no Ionic",
 
