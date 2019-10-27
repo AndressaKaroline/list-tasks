@@ -1,0 +1,52 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>listTask</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+
+    <ion-card *ngFor="let item of tasks">
+
+      <ion-card-header>
+        <h1>{{ item.task.name }}</h1>
+      </ion-card-header>
+
+      <ion-card-content>
+        <h1>Descrição: {{ item.task.description }}</h1>
+      </ion-card-content>
+  
+      <ion-card-content>
+        <h1>Data: {{ item.task.date }}</h1>
+      </ion-card-content>
+
+      <ion-row text-center>
+
+        <ion-col>
+          <button ion-button icon-left clear small (click)="editTask(item)">
+            <ion-icon name="create"></ion-icon>
+            <div>Editar</div>
+          </button>
+        </ion-col>
+
+        <ion-col>
+          <button ion-button icon-left clear small (click)="removeTask(item)">
+            <ion-icon name="remove"></ion-icon>
+            <div>Excluir</div>
+          </button>
+        </ion-col>
+
+      </ion-row>
+
+    </ion-card>
+
+  </ion-list>
+
+  <ion-fab rigth bottom>
+    <button ion-button color="primary" (click)="addTask()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+</ion-content>
