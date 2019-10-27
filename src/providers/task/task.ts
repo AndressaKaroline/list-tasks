@@ -30,7 +30,7 @@ export class TaskProvider {
 
   public getAll(){
     let tasks: TaskList[] = [];
-    this.storage.forEach((value: Task, key: string, itrationNumber: Number) => {
+    return this.storage.forEach((value: Task, key: string, itrationNumber: Number) => {
       let task = new TaskList(); 
       task.key = key;
       task.task = value;
