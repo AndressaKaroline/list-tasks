@@ -5,8 +5,6 @@
   </ion-navbar>
 
 </ion-header>
-
-
 <ion-content padding>
   <ion-list>
     <ion-item>
@@ -22,6 +20,11 @@
     <ion-item>
       <ion-label stacked>Data</ion-label>
       <ion-datetime name="date" [(ngModel)]="model.date"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Hora</ion-label>
+      <ion-datetime displayFormat="HH:mm" [(ngModel)]="model.hour"></ion-datetime>
     </ion-item>
   </ion-list>
 

@@ -50,6 +50,7 @@ export class Task{
   name: String;
   description: String;
   date: DateTime;
+  hour: DateTime;
 }
 
 export class TaskList {
