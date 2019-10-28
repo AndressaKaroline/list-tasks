@@ -30,6 +30,7 @@ export class TaskPage {
     .catch(() =>{
       this.toast.create({message: 'Erro ao salvar a tarefa.', duration: 3000, position: 'button'}).present();
     })
+    this.navCtrl.push('ListTaskPage')
   }
 
   private saveTask() {
