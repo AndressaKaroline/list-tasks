@@ -32,14 +32,8 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   pages: any[] = [
-    { title: 'Início', component: 'TabsPage' },
-    { title: 'Cards -', component: 'CardsPage' },
-    { title: 'Content -', component: 'ContentPage' },
-    { title: '**', component: 'ListMasterPage' },
-    { title: 'Menu -', component: 'MenuPage' },
-    { title: 'Logout', component: 'WelcomePage' },
-    { title: 'Nova Tarefa', component: 'TaskPage' },
     { title: 'Tarefas', component: 'ListTaskPage' },
+    { title: 'Logout', component: 'WelcomePage' },
   ]
 
   constructor(private translate: TranslateService, platform: Platform, settings: Settings, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen) {
