@@ -5,5 +5,4 @@ export class Task {
       this[f] = fields[f];
     }
   }
-
 }
