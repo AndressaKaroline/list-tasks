@@ -35,9 +35,11 @@ export class MyApp {
     { title: 'Início', component: 'TabsPage' },
     { title: 'Cards -', component: 'CardsPage' },
     { title: 'Content -', component: 'ContentPage' },
-    { title: 'Tarefas', component: 'ListMasterPage' },
+    { title: '**', component: 'ListMasterPage' },
     { title: 'Menu -', component: 'MenuPage' },
     { title: 'Logout', component: 'WelcomePage' },
+    { title: 'Nova Tarefa', component: 'TaskPage' },
+    { title: 'Tarefas', component: 'ListTaskPage' },
   ]
 
   constructor(private translate: TranslateService, platform: Platform, settings: Settings, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen) {
