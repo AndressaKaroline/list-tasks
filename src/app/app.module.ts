@@ -18,6 +18,7 @@ import { Facebook } from '@ionic-native/facebook';
 import { DatePipe } from '@angular/common';
 import { TaskProvider } from '../providers/task/task';
 import { NewTaskProvider } from '../providers/new-task/new-task';
+import { Calendar, CalendarOriginal } from '@ionic-native/calendar';
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -72,9 +73,10 @@ export function provideSettings(storage: Storage) {
     { provide: Settings, useFactory: provideSettings, deps: [Storage] },
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler },
+    CalendarOriginal,
     DatePipe,
     TaskProvider,
-    NewTaskProvider 
+    NewTaskProvider,
   ]
 })
 export class AppModule { }
