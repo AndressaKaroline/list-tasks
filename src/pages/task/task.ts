@@ -51,10 +51,11 @@ export class TaskPage {
     var date = new Date(this.data.date+" "+this.data.time);
     console.log(date);
     this.localNotifications.schedule({
-       text: 'Delayed ILocalNotification',
-       at: date,
-       led: 'FF0000',
-       sound: this.setSound(),
+      title: this.data.title,
+      text: this.data.description,
+      at: date,
+      led: 'FF0000',
+      sound: this.setSound(),
     });
     let alert = this.alertCtrl.create({
       title: 'Congratulation!',
