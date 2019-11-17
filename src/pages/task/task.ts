@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
-import { BoundTextAst } from '@angular/compiler';
+import { IonicPage, NavController, Platform, AlertController, NavParams, ToastController } from 'ionic-angular';
 import { TaskProvider, Task } from '../../providers/task/task';
+import { Component } from '@angular/core';
+import { LocalNotifications } from '@ionic-native/local-notifications';
 
 
 @IonicPage()
@@ -13,7 +13,12 @@ export class TaskPage {
   model: Task;
   key: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private taskProvider: TaskProvider, private toast: ToastController) {
+  data = { title:'', description:'', date:'', time:'' };
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+    private taskProvider: TaskProvider, private toast: ToastController,
+    public localNotifications: LocalNotifications,
+    public platform: Platform,
+    public alertCtrl: AlertController) {
     if (this.navParams.data.task && this.navParams.data.key) {
       this.model = this.navParams.data.task;
       this.key = this.navParams.data.key;
@@ -38,6 +43,34 @@ export class TaskPage {
       return this.taskProvider.update(this.key, this.model)
     }else{
       return this.taskProvider.insert(this.model)
+    }
+  }
+
+  submit() {
+    console.log(this.data);
+    var date = new Date(this.data.date+" "+this.data.time);
+    console.log(date);
+    this.localNotifications.schedule({
+      title: this.data.title,
+      text: this.data.description,
+      at: date,
+      led: 'FF0000',
+      sound: this.setSound(),
+    });
+    let alert = this.alertCtrl.create({
+      title: 'Congratulation!',
+      subTitle: 'Notification setup successfully at '+date,
+      buttons: ['OK']
+    });
+    alert.present();
+    this.data = { title:'', description:'', date:'', time:'' };
+  }
+
+  setSound() {
+    if (this.platform.is('android')) {
+      return 'file://assets/sounds/Rooster.mp3'
+    } else {
+      return 'file://assets/sounds/Rooster.caf'
     }
   }
 }

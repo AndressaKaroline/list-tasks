@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
-import { TaskProvider, Task, TaskList } from '../../providers/task/task';
+import { TaskProvider, TaskList } from '../../providers/task/task';
 
 
 @IonicPage()
@@ -11,7 +11,8 @@ import { TaskProvider, Task, TaskList } from '../../providers/task/task';
 export class ListTaskPage {
   tasks: TaskList[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private taskProvider: TaskProvider, private toast: ToastController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+    private taskProvider: TaskProvider, private toast: ToastController) {
   }
 
   ionViewDidEnter() {
