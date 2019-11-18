@@ -10,20 +10,20 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
   templateUrl: 'task.html',
 })
 export class TaskPage {
-  model: Task;
+  data: Task;
   key: string;
 
-  data = { title:'', description:'', date:'', time:'' };
+  // data1 = { title:'', description:'', date:'', time:'' };
   constructor(public navCtrl: NavController, public navParams: NavParams, 
     private taskProvider: TaskProvider, private toast: ToastController,
     public localNotifications: LocalNotifications,
     public platform: Platform,
     public alertCtrl: AlertController) {
     if (this.navParams.data.task && this.navParams.data.key) {
-      this.model = this.navParams.data.task;
+      this.data = this.navParams.data.task;
       this.key = this.navParams.data.key;
     } else {
-      this.model = new Task();
+      this.data = new Task();
     }
   }
 
@@ -40,9 +40,9 @@ export class TaskPage {
 
   private saveTask() {
     if (this.key) {
-      return this.taskProvider.update(this.key, this.model)
+      return this.taskProvider.update(this.key, this.data)
     }else{
-      return this.taskProvider.insert(this.model)
+      return this.taskProvider.insert(this.data)
     }
   }
 
@@ -51,7 +51,7 @@ export class TaskPage {
     var date = new Date(this.data.date+" "+this.data.time);
     console.log(date);
     this.localNotifications.schedule({
-      title: this.data.title,
+      title: this.data.name,
       text: this.data.description,
       at: date,
       led: 'FF0000',
@@ -63,7 +63,7 @@ export class TaskPage {
       buttons: ['OK']
     });
     alert.present();
-    this.data = { title:'', description:'', date:'', time:'' };
+    // this.data1 = { title:'', description:'', date:'', time:'' };
   }
 
   setSound() {

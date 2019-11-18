@@ -46,10 +46,10 @@ export class TaskProvider {
 
 export class Task{
   //user: Usuario
-  name: String;
-  description: String;
+  name: string;
+  description: string;
   date: DateTime;
-  hour: DateTime;
+  time: DateTime;
 }
 
 export class TaskList {
