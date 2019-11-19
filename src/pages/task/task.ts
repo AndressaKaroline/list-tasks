@@ -3,7 +3,6 @@ import { TaskProvider, Task } from '../../providers/task/task';
 import { Component } from '@angular/core';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 
-
 @IonicPage()
 @Component({
   selector: 'page-task',
@@ -54,6 +53,8 @@ export class TaskPage {
       at: date,
       led: 'FF0000',
       sound: this.setSound(),
+      smallIcon: 'res://icon',
+      icon: 'file://assets/img/icon.png'
     });
     let alert = this.alertCtrl.create({
       title: 'Ok!',
