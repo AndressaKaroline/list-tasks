@@ -7,27 +7,27 @@
 </ion-header>
 
 <ion-content padding>
-  <form (ngSubmit)="submit()">
+  <form novalidate [formGroup]="registerForm" (ngSubmit)="submit()">
     <ion-list>
       <ion-item>
         <ion-label floating>Name</ion-label>
-        <ion-input type="text" [(ngModel)]="data.name" name="name"></ion-input>
+        <ion-input formControlName="name" type="text" [(ngModel)]="data.name" name="name"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label floating>Description</ion-label>
-        <ion-input type="text" [(ngModel)]="data.description" name="description"></ion-input>
+        <ion-input formControlName="description" type="text" [(ngModel)]="data.description" name="description"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label floating>Date</ion-label>
-        <ion-datetime displayFormat="DD/MM/YY" pickerFormat="D MMMM YYYY" [(ngModel)]="data.date" name="date"></ion-datetime>
+        <ion-datetime formControlName="date"displayFormat="DD/MM/YY" pickerFormat="D MMMM YYYY" [(ngModel)]="data.date" name="date"></ion-datetime>
       </ion-item>
       <ion-item>
         <ion-label floating>Time</ion-label>
-        <ion-datetime displayFormat="HH:mm" pickerFormat="HH mm" [(ngModel)]="data.time" name="time"></ion-datetime>
+        <ion-datetime formControlName="time" displayFormat="HH:mm" pickerFormat="HH mm" [(ngModel)]="data.time" name="time"></ion-datetime>
       </ion-item>
     </ion-list>
     <div padding>
-      <button ion-button full round (click)= "save()" >Add Notification</button>
+      <button ion-button full round (click)= "save()" [disabled]="registerForm.invalid" >Adicionar Notificação</button>
     </div>
   </form>
 </ion-content>
