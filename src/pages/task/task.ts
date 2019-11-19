@@ -13,7 +13,6 @@ export class TaskPage {
   data: Task;
   key: string;
 
-  // data1 = { title:'', description:'', date:'', time:'' };
   constructor(public navCtrl: NavController, public navParams: NavParams, 
     private taskProvider: TaskProvider, private toast: ToastController,
     public localNotifications: LocalNotifications,
@@ -28,6 +27,7 @@ export class TaskPage {
   }
 
   save() {
+    console.log(this.data)
     this.saveTask()
     .then(() => {
       this.toast.create({message: 'Tarefa salva.', duration: 3000, position: 'button'}).present();
@@ -47,9 +47,7 @@ export class TaskPage {
   }
 
   submit() {
-    console.log(this.data);
     var date = new Date(this.data.date+" "+this.data.time);
-    console.log(date);
     this.localNotifications.schedule({
       title: this.data.name,
       text: this.data.description,
@@ -58,12 +56,11 @@ export class TaskPage {
       sound: this.setSound(),
     });
     let alert = this.alertCtrl.create({
-      title: 'Congratulation!',
-      subTitle: 'Notification setup successfully at '+date,
+      title: 'Ok!',
+      subTitle: 'Configuração de notificação salva com êxito em '+date,
       buttons: ['OK']
     });
     alert.present();
-    // this.data1 = { title:'', description:'', date:'', time:'' };
   }
 
   setSound() {
