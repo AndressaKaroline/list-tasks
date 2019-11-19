@@ -10,8 +10,8 @@
   <form (ngSubmit)="submit()">
     <ion-list>
       <ion-item>
-        <ion-label floating>Title</ion-label>
-        <ion-input type="text" [(ngModel)]="data.title" name="title"></ion-input>
+        <ion-label floating>Name</ion-label>
+        <ion-input type="text" [(ngModel)]="data.name" name="name"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label floating>Description</ion-label>
@@ -27,41 +27,8 @@
       </ion-item>
     </ion-list>
     <div padding>
-      <button ion-button full round>Add Notification</button>
+      <button ion-button full round (click)= "save()" >Add Notification</button>
     </div>
   </form>
 </ion-content>
-
-<!--<ion-header>
-
-  <ion-navbar>
-    <ion-title>task</ion-title>
-  </ion-navbar>
-
-</ion-header>
-<ion-content padding>
-  <ion-list>
-    <ion-item>
-      <ion-label stacked>Nome</ion-label>
-      <ion-input type="text" name="name" [(ngModel)]="model.name"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label stacked>Descrição</ion-label>
-      <ion-input type="text" name="description" [(ngModel)]="model.description"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label stacked>Data</ion-label>
-      <ion-datetime name="date" [(ngModel)]="model.date"></ion-datetime>
-    </ion-item>
-
-    <ion-item>
-      <ion-label stacked>Hora</ion-label>
-      <ion-datetime displayFormat="HH:mm" [(ngModel)]="model.hour"></ion-datetime>
-    </ion-item>
-  </ion-list>
-
-  <button ion-button block (click)="save()">Salvar</button>
-</ion-content>-->
 

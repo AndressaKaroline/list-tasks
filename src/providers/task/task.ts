@@ -7,7 +7,6 @@ import { DateTime } from 'ionic-angular';
 export class TaskProvider {
 
   constructor(private storage: Storage, private datepipe: DatePipe) {
-  
   }
 
   public insert(task: Task){
@@ -46,10 +45,10 @@ export class TaskProvider {
 
 export class Task{
   //user: Usuario
-  name: String;
-  description: String;
+  name: string;
+  description: string;
   date: DateTime;
-  hour: DateTime;
+  time: DateTime;
 }
 
 export class TaskList {
