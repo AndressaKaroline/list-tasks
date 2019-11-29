@@ -1,46 +1,49 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>listTask</ion-title>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-9>
+          <ion-title>
+            <span text-color="my-custom-color"> Seus Eventos </span>
+          </ion-title>
+        </ion-col>
+        <ion-col col-3>
+          <button ion-button color="light" round (click)="addTask()">
+            <ion-icon name="add"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-navbar>
-
 </ion-header>
 
-
-<ion-content padding>
+<ion-content class="back">
   <ion-list>
-
     <ion-card *ngFor="let item of tasks">
-
-      <ion-card-header>
-        <h1>{{ item.task.name }}</h1>
-      </ion-card-header>
-
-      <ion-card-content>
-        <h1>Descrição: {{ item.task.description }}</h1>
-      </ion-card-content>
-  
-      <ion-card-content>
-        <h1>Data: {{ item.task.date | date: 'dd/MM/yyyy' }}</h1>
-      </ion-card-content>
-
-      <ion-card-content>
-        <h1>Hora: {{ item.task.time }}</h1>
-      </ion-card-content>
-
       <ion-row text-center>
 
-        <ion-col>
+        <ion-col col-6>
+          <ion-card-header>
+            <h1>{{ item.task.name }}</h1>
+          </ion-card-header>
+        </ion-col>
+
+        <ion-col col-2>
+            <button ion-button icon-left clear small (click)="showTask(item)">
+              <ion-icon name="open"></ion-icon>
+            </button>
+          </ion-col>
+
+        <ion-col col-2>
           <button ion-button icon-left clear small (click)="editTask(item)">
             <ion-icon name="create"></ion-icon>
-            <div>Editar</div>
           </button>
         </ion-col>
 
-        <ion-col>
+        <ion-col col-2>
           <button ion-button icon-left clear small (click)="removeTask(item)">
-            <ion-icon name="remove"></ion-icon>
-            <div>Excluir</div>
+            <ion-icon name="close"></ion-icon>
           </button>
         </ion-col>
 
@@ -49,8 +52,4 @@
     </ion-card>
 
   </ion-list>
-
-  <ion-fab rigth bottom>
-    <button ion-button color="primary" (click)="addTask()"><ion-icon name="add"></ion-icon></button>
-  </ion-fab>
 </ion-content>

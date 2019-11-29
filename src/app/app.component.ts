@@ -11,7 +11,9 @@ import { Settings } from '../providers/providers';
   template: `<ion-menu [content]="content">
     <ion-header>
       <ion-toolbar>
-        <ion-title>Pages</ion-title>
+        <ion-title>
+         <span text-color="my-custom-color"> ListTask </span>
+        </ion-title>
       </ion-toolbar>
     </ion-header>
 
@@ -32,7 +34,8 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   pages: any[] = [
-    { title: 'Tarefas', component: 'ListTaskPage' },
+    { title: 'Eventos', component: 'ListTaskPage' },
+    { title: 'Novo Evento', component: 'TaskPage' },
     { title: 'Logout', component: 'WelcomePage' },
   ]
 

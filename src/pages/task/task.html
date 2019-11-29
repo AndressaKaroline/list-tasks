@@ -1,12 +1,12 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Local Notification
+      <span text-color="my-custom-color"> Adicionar Evento </span>
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
   <form novalidate [formGroup]="registerForm" (ngSubmit)="submit()">
     <ion-list>
       <ion-item>
@@ -15,20 +15,30 @@
       </ion-item>
       <ion-item>
         <ion-label floating>Description</ion-label>
-        <ion-input formControlName="description" type="text" [(ngModel)]="data.description" name="description"></ion-input>
+        <ion-input formControlName="description" type="text" [(ngModel)]="data.description" name="description">
+        </ion-input>
       </ion-item>
-      <ion-item>
-        <ion-label floating>Date</ion-label>
-        <ion-datetime formControlName="date"displayFormat="DD/MM/YY" pickerFormat="D MMMM YYYY" [(ngModel)]="data.date" name="date"></ion-datetime>
-      </ion-item>
-      <ion-item>
-        <ion-label floating>Time</ion-label>
-        <ion-datetime formControlName="time" displayFormat="HH:mm" pickerFormat="HH mm" [(ngModel)]="data.time" name="time"></ion-datetime>
-      </ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label floating>Date</ion-label>
+              <ion-datetime formControlName="date" displayFormat="DD/MM/YY" pickerFormat="D MMMM YYYY"
+                [(ngModel)]="data.date" name="date"></ion-datetime>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-label floating>Time</ion-label>
+              <ion-datetime formControlName="time" displayFormat="HH:mm" pickerFormat="HH mm" [(ngModel)]="data.time"
+                name="time"></ion-datetime>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </ion-list>
     <div padding>
-      <button ion-button full round (click)= "save()" [disabled]="registerForm.invalid" >Adicionar Notificação</button>
+      <button ion-button full round (click)="save()" [disabled]="registerForm.invalid">Adicionar Notificação</button>
     </div>
   </form>
 </ion-content>
-
