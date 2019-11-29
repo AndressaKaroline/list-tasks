@@ -1,8 +1,4 @@
 page-show-task {
-  .back {
-    background-image: url("../assets/img/task.png");
-  }
-
   h1 {
     padding-top: 1em;
     font-size: 50px;
@@ -17,5 +13,17 @@ page-show-task {
     font-size: 25px;
     padding-top: 3px;
     font-weight: bold;
+  }
+
+  .toolbar-background {
+    background-image: linear-gradient(#8d3eed, #7d2bdf, #8d3eed);
+  }
+
+  ion-navbar {
+    height: 10px;
+  }
+
+  [text-color="my-custom-color"] {
+    color: white;
   }
 }
