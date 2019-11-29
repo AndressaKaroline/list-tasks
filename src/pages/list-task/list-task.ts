@@ -30,6 +30,10 @@ export class ListTaskPage {
     this.navCtrl.push('TaskPage', { key: item.key, task: item.task});
   }
 
+  showTask(item: TaskList){
+    this.navCtrl.push('ShowTaskPage', { key: item.key, task: item.task});
+  }
+
   removeTask(item: TaskList){
     this.taskProvider.remove(item.key)
     .then(() => {
