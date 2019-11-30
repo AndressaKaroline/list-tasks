@@ -19,6 +19,9 @@ import { DatePipe } from '@angular/common';
 import { TaskProvider } from '../providers/task/task';
 import { NewTaskProvider } from '../providers/new-task/new-task';
 import { LocalNotifications } from '@ionic-native/local-notifications';
+import { Calendar } from '@ionic-native/calendar';
+
+
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -75,6 +78,7 @@ export function provideSettings(storage: Storage) {
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     DatePipe,
     TaskProvider,
+    Calendar,
     NewTaskProvider,
     LocalNotifications
   ]

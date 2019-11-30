@@ -20,6 +20,7 @@
         "@angular/http": "5.0.0",
         "@angular/platform-browser": "5.0.0",
         "@angular/platform-browser-dynamic": "5.0.0",
+        "@ionic-native/calendar": "^4.20.0",
         "@ionic-native/camera": "^4.3.2",
         "@ionic-native/core": "^4.20.0",
         "@ionic-native/facebook": "^4.20.0",
@@ -32,6 +33,7 @@
         "cordova-android": "^6.4.0",
         "cordova-browser": "~5.0.4",
         "cordova-plugin-badge": "^0.8.8",
+        "cordova-plugin-calendar": "^5.1.5",
         "cordova-plugin-device": "^1.1.7",
         "cordova-plugin-ionic-webview": "^1.2.1",
         "cordova-plugin-local-notification": "^0.9.0-beta.2",
@@ -61,7 +63,8 @@
             "cordova-plugin-splashscreen": {},
             "cordova-plugin-whitelist": {},
             "ionic-plugin-keyboard": {},
-            "cordova-plugin-local-notification": {}
+            "cordova-plugin-local-notification": {},
+            "cordova-plugin-calendar": {}
         },
         "platforms": [
             "android",

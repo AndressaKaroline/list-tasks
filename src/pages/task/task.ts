@@ -5,6 +5,8 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { DateTime } from 'ionic-angular';
+import { Calendar } from '@ionic-native/calendar';
+
 
 @IonicPage()
 @Component({
@@ -17,7 +19,7 @@ export class TaskPage {
   registerForm: FormGroup
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    private taskProvider: TaskProvider, private toast: ToastController,
+    private taskProvider: TaskProvider, private toast: ToastController, public calendar: Calendar,
     private datepipe: DatePipe,
     public localNotifications: LocalNotifications,
     public platform: Platform,
@@ -49,13 +51,20 @@ export class TaskPage {
     this.navCtrl.push('ListTaskPage')
   }
 
+  public createEvent(title: any, location: any, notes: any, startDate: any, endDate: any): void {
+    this.calendar.createEvent(title, location, notes, startDate, endDate)
+  }
+
   private saveTask() {
+    var date = new Date(this.data.date + " " + this.data.time);
     if (this.key) {
       this.submit(this.key)
+      this.createEvent(this.data.name, null, this.data.description, date, date)
       return this.taskProvider.update(this.key, this.data)
     } else {
       let key = this.datepipe.transform(new Date, "ddMMyyyyHHmmss")
       this.submit(key)
+      this.createEvent(this.data.name, null, this.data.description, date, date)
       return this.taskProvider.insert(key, this.data)
     }
   }
