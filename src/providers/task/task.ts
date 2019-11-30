@@ -9,8 +9,7 @@ export class TaskProvider {
   constructor(private storage: Storage, private datepipe: DatePipe) {
   }
 
-  public insert(task: Task){
-    let key = this.datepipe.transform(new Date, "ddMMyyyyHHmmss")
+  public insert(key: string, task: Task){
     return this.save(key, task);
   }
 

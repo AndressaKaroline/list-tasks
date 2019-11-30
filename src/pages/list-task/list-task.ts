@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { TaskProvider, TaskList } from '../../providers/task/task';
+import { LocalNotifications } from '@ionic-native/local-notifications';
 
+
+//import { TaskPage } from '../task/task';
 
 @IonicPage()
 @Component({
@@ -12,7 +15,7 @@ export class ListTaskPage {
   tasks: TaskList[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
-    private taskProvider: TaskProvider, private toast: ToastController) {
+    private taskProvider: TaskProvider, private toast: ToastController,  public localNotifications: LocalNotifications) {
   }
 
   ionViewDidEnter() {
@@ -27,6 +30,7 @@ export class ListTaskPage {
   }
 
   editTask(item: TaskList){
+    this.localNotifications.clear(item.key)
     this.navCtrl.push('TaskPage', { key: item.key, task: item.task});
   }
 
@@ -35,6 +39,7 @@ export class ListTaskPage {
   }
 
   removeTask(item: TaskList){
+    this.localNotifications.clear(item.key)
     this.taskProvider.remove(item.key)
     .then(() => {
       let index = this.tasks.indexOf(item);

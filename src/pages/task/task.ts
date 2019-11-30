@@ -3,6 +3,8 @@ import { TaskProvider, Task } from '../../providers/task/task';
 import { Component } from '@angular/core';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { DatePipe } from '@angular/common';
+import { DateTime } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -14,17 +16,18 @@ export class TaskPage {
   key: string;
   registerForm: FormGroup
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, 
-  private taskProvider: TaskProvider, private toast: ToastController,
-  public localNotifications: LocalNotifications,
-  public platform: Platform,
-  public alertCtrl: AlertController,
-  public formbuilder: FormBuilder) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    private taskProvider: TaskProvider, private toast: ToastController,
+    private datepipe: DatePipe,
+    public localNotifications: LocalNotifications,
+    public platform: Platform,
+    public alertCtrl: AlertController,
+    public formbuilder: FormBuilder) {
     this.registerForm = this.formbuilder.group({
-      name:[null, [Validators.required]],
-      description:[null, [Validators.required, Validators.maxLength(50)]],
-      date:[null, [Validators.required]],
-      time:[null, [Validators.required]]
+      name: [null, [Validators.required]],
+      description: [null, [Validators.required, Validators.maxLength(50)]],
+      date: [null, [Validators.required]],
+      time: [null, [Validators.required]]
     })
 
     if (this.navParams.data.task && this.navParams.data.key) {
@@ -36,28 +39,31 @@ export class TaskPage {
   }
 
   save() {
-    console.log(this.data)
     this.saveTask()
-    .then(() => {
-      this.toast.create({message: 'Tarefa salva.', duration: 3000, position: 'button'}).present();
-    })
-    .catch(() =>{
-      this.toast.create({message: 'Erro ao salvar a tarefa.', duration: 3000, position: 'button'}).present();
-    })
+      .then(() => {
+        this.toast.create({ message: 'Tarefa salva.', duration: 3000, position: 'button' }).present();
+      })
+      .catch(() => {
+        this.toast.create({ message: 'Erro ao salvar a tarefa.', duration: 3000, position: 'button' }).present();
+      })
     this.navCtrl.push('ListTaskPage')
   }
 
   private saveTask() {
     if (this.key) {
+      this.submit(this.key)
       return this.taskProvider.update(this.key, this.data)
-    }else{
-      return this.taskProvider.insert(this.data)
+    } else {
+      let key = this.datepipe.transform(new Date, "ddMMyyyyHHmmss")
+      this.submit(key)
+      return this.taskProvider.insert(key, this.data)
     }
   }
 
-  submit() {
-    var date = new Date(this.data.date+" "+this.data.time);
+  submit(key: any) {
+    var date = new Date(this.data.date + " " + this.data.time);
     this.localNotifications.schedule({
+      id: key,
       title: this.data.name,
       text: this.data.description,
       at: date,
@@ -68,7 +74,7 @@ export class TaskPage {
     });
     let alert = this.alertCtrl.create({
       title: 'Ok!',
-      subTitle: 'Configuração de notificação salva com êxito em '+date,
+      subTitle: 'Configuração de notificação salva com êxito em ' + date,
       buttons: ['OK']
     });
     alert.present();
