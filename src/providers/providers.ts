@@ -1,11 +1,13 @@
-import { Api } from './api/api';
+import { ApiLogin } from './api/apiLogin';
+import { ApiSignup } from './api/apiSignup';
 import { Items } from '../mocks/providers/items';
 import { Settings } from './settings/settings';
-import { User } from './user/user';
+import { UserProvider } from './user/user';
 
 export {
-    Api,
+    ApiLogin,
+    ApiSignup,
     Items,
     Settings,
-    User
+    UserProvider
 };

@@ -5,8 +5,8 @@ import { Injectable } from '@angular/core';
  * Api is a generic REST Api handler. Set your API url first.
  */
 @Injectable()
-export class Api {
-  url: string = 'https://example.com/api/v1';
+export class ApiSignup {
+  url: string = 'https://api.magtab.com/api/appv2/cadastrousuarios';
 
   constructor(public http: HttpClient) {
   }

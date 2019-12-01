@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { IonicPage, NavController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 
-import { User } from '../../providers/providers';
+import { UserProvider, User } from '../../providers/user/user';
 import { MainPage } from '../pages';
 
 @IonicPage()
@@ -11,40 +11,45 @@ import { MainPage } from '../pages';
   templateUrl: 'login.html'
 })
 export class LoginPage {
-  // The account fields for the login form.
-  // If you're using the username field with or without email, make
-  // sure to add it to the type
-  account: { email: string, password: string } = {
-    email: 'test@example.com',
-    password: 'test'
-  };
+  model: User;
 
   // Our translated text strings
   private loginErrorString: string;
 
   constructor(public navCtrl: NavController,
-    public user: User,
+    public userProvider: UserProvider,
     public toastCtrl: ToastController,
+    public navParams: NavParams,
     public translateService: TranslateService) {
 
     this.translateService.get('LOGIN_ERROR').subscribe((value) => {
       this.loginErrorString = value;
     })
+      this.model = new User();
+      this.model.email = 'test@gmail.com';
+      this.model.password = 'test';
   }
 
-  // Attempt to login in through our User service
   doLogin() {
-    this.user.login(this.account).subscribe((resp) => {
-      this.navCtrl.push(MainPage);
-    }, (err) => {
-      this.navCtrl.push(MainPage);
-      // Unable to log in
-      let toast = this.toastCtrl.create({
-        message: this.loginErrorString,
-        duration: 3000,
-        position: 'top'
+    console.log(this.model.email + " - " + this.model.password);
+    this.userProvider.getUser(this.model.email)
+      .then((result: any) => {
+        console.log(result.email)
+        if(result.password == this.model.password) {
+          this.toastCtrl.create({ message: 'Usuário logado com sucesso.', position: 'botton', duration: 3000 }).present();
+          this.navCtrl.push('MainPage', {
+            user: result
+          });
+        } else {
+          this.toastCtrl.create({ message: 'Senha incorreta!', position: 'botton', duration: 3000})
+        }
+        //Salvar o token no Ionic Storage para usar em futuras requisições.
+        //Redirecionar o usuario para outra tela usando o navCtrl
+        //this.navCtrl.pop();
+        //this.navCtrl.setRoot()
+      })
+      .catch((error: any) => {
+        this.toastCtrl.create({ message: 'Erro ao efetuar login. Verifique o email', position: 'botton', duration: 3000 }).present();
       });
-      toast.present();
-    });
   }
 }

@@ -1,4 +1,5 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Camera } from '@ionic-native/camera';
@@ -11,8 +12,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { Items } from '../mocks/providers/items';
 import { Settings } from '../providers/providers';
-import { User } from '../providers/providers';
-import { Api } from '../providers/providers';
+import { UserProvider } from '../providers/providers';
 import { MyApp } from './app.component';
 import { Facebook } from '@ionic-native/facebook';
 import { DatePipe } from '@angular/common';
@@ -51,6 +51,7 @@ export function provideSettings(storage: Storage) {
   imports: [
     BrowserModule,
     HttpClientModule,
+    HttpModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -66,9 +67,8 @@ export function provideSettings(storage: Storage) {
     MyApp
   ],
   providers: [
-    Api,
     Items,
-    User,
+    UserProvider,
     Camera,
     SplashScreen,
     StatusBar,
