@@ -83,7 +83,7 @@ export class TaskPage {
     });
     let alert = this.alertCtrl.create({
       title: 'Ok!',
-      subTitle: 'Configuração de notificação salva com êxito em ' + date,
+      subTitle: 'Notificação salva com êxito',
       buttons: ['OK']
     });
     alert.present();

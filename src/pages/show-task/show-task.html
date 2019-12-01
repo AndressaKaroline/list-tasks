@@ -1,12 +1,21 @@
 <ion-header>
   <ion-navbar>
-      <span text-color="my-custom-color"> Evento </span>
+    <ion-title>
+      <span text-color="my-custom-color"> Seus Eventos </span>
+    </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content class="back">
-  <h1> {{title.name}}</h1>
-  <p> Descrição: {{title.description}} </p>
-  <p> Data: {{title.date}} </p>
-  <p> Horário: {{title.time}} </p>
+  <div class="pad">
+    <ion-card>
+      <ion-card-header>
+        <h1> {{title.name}}</h1>
+        <p> Descrição: <span>{{title.description}} </span></p>
+        <p> Data: <span>{{title.date}} </span></p>
+        <p> Horário: <span>{{title.time}} </span></p>
+      </ion-card-header>
+    </ion-card>
+  </div>
+
 </ion-content>
